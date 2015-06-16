@@ -2,7 +2,9 @@
 JavaScript TODO class and inheritance
 
 var Base = Klass.extend({
-
+  init: function(opts){
+    // use the opts TODO Initialization
+  }
 });
 
 var base = new Base(opts); // var base = Base(opts)
