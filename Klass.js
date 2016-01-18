@@ -1,36 +1,9 @@
-
 var Klass = function () {
 	var _mixin = function (b, e) {
     for (var k in e) {
       e.hasOwnProperty(k) && (b[k] = e[k])
     }
   };
-  var _args2str = function (obj) {
-    switch (typeof (obj)) {
-      case 'object':
-        var ret = [];
-        if (obj instanceof Array) {
-          for (var i = 0, len = obj.length; i < len; i++) {
-            ret.push(arguments.callee(obj[i]));
-          }
-          return '[' + ret.join(',') + ']';
-        } else if (obj instanceof RegExp) {
-          return obj.toString();
-        } else {
-          for (var a in obj) {
-            ret.push(a + ':' + arguments.callee(obj[a]));
-          }
-          return '{' + ret.join(',') + '}';
-        } 
-      case 'string':
-        return "\"" + obj.replace(/(\\|\")/g, "\\$1")
-          .replace(/\n|\r|\t/g, function (a) {
-          return ("\n" == a) ? "\\n" : ("\r" == a) ? "\\r" : ("\t" == a) ? "\\t" : "";
-        }) + "\"";
-      default:
-        return obj.toString();
-    }
-  },
   // 模拟extend继承方式
   var _extend = function () {
     // 开关,为了在继承的时候不调用父类的init方法渲染，而把渲染放在子类
@@ -50,15 +23,9 @@ var Klass = function () {
     // 继承后返回的子类
     var SubKlass = function () {
 
-      var argstr = '';
-      for (var i = 0; i < arguments.length; i++) {
-        argstr += _args2str(arguments[i]) + ","
-      }
-      argstr = argstr.substring(0, argstr.length - 1);
-
       var isNew = this instanceof arguments.callee, isInit;
       if (!isNew) {
-        return eval("new arguments.callee(" + argstr + ")");
+        throw new Error("please use new!");
       } else {
         isInit = (SubKlass.TODOinit && this.init)
         if (isInit) {
