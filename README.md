@@ -1,5 +1,5 @@
 # Klass
-JavaScript TODO class and inheritance
+JavaScript class and inheritance
 
 var Base = Klass.extend({
   init: function(opts){
