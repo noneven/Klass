@@ -1,9 +1,9 @@
 var Klass = function () {
 	var _mixin = function (b, e) {
     for (var k in e) {
-      e.hasOwnProperty(k) && (b[k] = e[k])
-    }
-  };
+    	e.hasOwnProperty(k) && (b[k] = e[k])
+  	}
+	};
   // 模拟extend继承方式
   var _extend = function () {
     // 开关,为了在继承的时候不调用父类的init方法渲染，而把渲染放在子类
