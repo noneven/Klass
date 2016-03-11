@@ -1,16 +1,26 @@
-# Klass
+## Klass
 JavaScript class and inheritance
 
+### 主要API
+
+1、Klass.extend 
+2、链式调用
+```javascript
 var Base = Klass.extend({
-  init: function(opts){
-    
-  }
+    init: function(option){
+        this.initOptions()
+        this.initEvents();
+    },
+    initOptions: function(){},
+    initEvents: function(){}
 });
-
-var base = new Base(opts); // var base = Base(opts)
-
-var Child = Base.extend({
-  
-})
-
-var child = new Child(opts); // var child = Child(opts)
+var MyComponent = Base.extend({
+    init: function(){};
+    //...
+});
+```
+3、实例化
+```javascript
+var MyInstance = new MyComponent(opts);
+var MyInstance = MyComponent(opts);
+```
