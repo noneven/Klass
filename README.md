@@ -4,6 +4,7 @@ JavaScript class and inheritance
 ### 主要API
 
 1、Klass.extend 
+
 2、链式调用
 ```javascript
 var Base = Klass.extend({
